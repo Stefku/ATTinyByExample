@@ -19,5 +19,6 @@ void loop() {
   PORTB = 0b00000000; // turn off whole PortB
   PORTB &= 1<<PB4;    // just toggle PB4 off, all others stay as they are
   digitalWrite(4, LOW); // just toggle PB4 off, all others stay as they are
+  // PORTB ^= (1<<PB4); // alternatively, inverse state of PB4 
   delay(1000);
 }
