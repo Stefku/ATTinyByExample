@@ -1,8 +1,63 @@
 # ATtiny By Example (in progress)
 
 # Interrupts
-## Interrupt at any logical change
-### Triggered from external source
+## Interrupt PCINT[5:0] at any logical state
+### PCINT1 Triggered from external source at pin PB1
+```
+#include <avr/io.h>
+#include <avr/interrupt.h>
+
+void initInterrupt() {
+  GIMSK |= 1 << PCIE;       // enable PCINT[0:5] pin change interrupt
+  PCMSK |= 1 << PCINT1;     // configure interrupt at PB1
+  sei();                    // globaly enable interrupts
+}
+
+void setup() {
+  DDRB |= 1 << DDB4;     // define PB4 as output
+  DDRB &= ~ (1 << DDB1); // define PB1 as input
+  PORTB |= 1 << PB1;    // enable pull up resistor at PB1
+  initInterrupt();
+}
+
+ISR(PCINT0_vect) {
+  PORTB ^= (1 << PB4);   // inverse logical level at PB4 / blink
+}
+
+void loop() {
+  // nop
+}
+```
+### PCINT1 Triggered from internal source at pin PB1
+```
+#include <avr/io.h>
+#include <avr/interrupt.h>
+
+void initInterrupt() {
+  GIMSK |= 1 << PCIE;       // enable PCINT[0:5] pin change interrupt
+  PCMSK |= 1 << PCINT1;     // configure interrupt at PB1
+  sei();                    // globaly enable interrupts
+}
+
+void setup() {
+  DDRB |= 1 << DDB4;     // define PB4 as output
+  DDRB |= 1 << DDB1;     // define PB1 as output
+  initInterrupt();
+}
+
+ISR(PCINT0_vect) {
+  PORTB ^= (1 << PB4);   // inverse logical level at PB4 / blink
+}
+
+void loop() {
+  delay(1000); 
+  PORTB ^= 1 << PB1;    // switch state at PB1
+}
+```
+## Interrupt INT0 at any logical change
+Compared to PCINT[5:0] the interrupt INT0 is also able to interrupt at logical change at pin INT0, but also on falling or rising edge of INT0 and furthermore at low level at INT0. The differnce made the configuration of MCUCR, the MCU Control Register (see datasheet chap. 9.3.1 at page 47). In the following examples interrupt is configured at any logical change at INT0.
+
+### INT0 Triggered from external source
 ```
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -30,7 +85,7 @@ void loop() {
 }
 ```
 
-### Triggered from internal source
+### INT0 Triggered from internal source
 ```
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -60,6 +115,16 @@ void loop() {
 
 # Datasheet
 Please refere to the datasheet of ATtiny13A [http://ww1.microchip.com/downloads/en/DeviceDoc/doc8126.pdf]().
+
+# Libraries
+For example
+```
+#include <avr/io.h>
+```
+
+All libraries are found on github [https://github.com/vancegroup-mirrors/avr-libc/blob/master/avr-libc/include/avr]().
+
+The library defining PORTB, DDRB, PB4, etc. for ATtiny10a is [https://github.com/vancegroup-mirrors/avr-libc/blob/master/avr-libc/include/avr/iotn13a.h](). Note: You won't include it directly.
 
 # Arduino IDE
 
