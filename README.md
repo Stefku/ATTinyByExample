@@ -113,6 +113,36 @@ void loop() {
 }
 ```
 
+# PWM
+## Fade in and out an LED at PB0
+```
+void setup() {
+  DDRB |= 1 << DDB0;     // define PB0 as output
+  TCCR0A = 3 << COM0A0| 3 << WGM00;
+}
+
+void loop() {
+  for (int i=-255; i <= 254; i++) {
+    OCR0A = abs(i);
+    delay(3);
+  }
+}
+```
+Same at PB1
+```
+void setup() {
+  DDRB |= 1 << DDB1;     // define PB1 as output
+  TCCR0A = 3 << COM0B0| 3 << WGM00;
+}
+
+void loop() {
+  for (int i=-255; i <= 254; i++) {
+    OCR0B = abs(i);
+    delay(3);
+  }
+}
+```
+
 # Datasheet
 Please refere to the datasheet of ATtiny13A [http://ww1.microchip.com/downloads/en/DeviceDoc/doc8126.pdf]().
 
