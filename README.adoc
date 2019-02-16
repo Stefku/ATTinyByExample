@@ -1,9 +1,6 @@
 = ATtiny By Example (in progress)
-
 :toc:
 :toc-placement!:
-
-Source code examples to functionality of ATtiny microcontroller.
 
 toc::[]
 
