@@ -1,8 +1,15 @@
-# ATtiny By Example (in progress)
+= ATtiny By Example (in progress)
 
-# Interrupts
-## Interrupt PCINT[5:0] at any logical state
-### PCINT1 Triggered from external source at pin PB1
+:toc:
+:toc-placement!:
+
+Source code examples to functionality of ATtiny microcontroller.
+
+toc::[]
+
+= Interrupts
+== Interrupt PCINT[5:0] at any logical state
+=== PCINT1 Triggered from external source at pin PB1
 ```
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -144,7 +151,7 @@ void loop() {
 ```
 
 # Datasheet
-Please refere to the datasheet of ATtiny13A [http://ww1.microchip.com/downloads/en/DeviceDoc/doc8126.pdf]().
+Please refere to the datasheet of ATtiny13A http://ww1.microchip.com/downloads/en/DeviceDoc/doc8126.pdf.
 
 # Libraries
 For example
@@ -152,14 +159,14 @@ For example
 #include <avr/io.h>
 ```
 
-All libraries are found on github [https://github.com/vancegroup-mirrors/avr-libc/blob/master/avr-libc/include/avr]().
+All libraries are found on github https://github.com/vancegroup-mirrors/avr-libc/blob/master/avr-libc/include/avr.
 
-The library defining PORTB, DDRB, PB4, etc. for ATtiny10a is [https://github.com/vancegroup-mirrors/avr-libc/blob/master/avr-libc/include/avr/iotn13a.h](). Note: You won't include it directly.
+The library defining PORTB, DDRB, PB4, etc. for ATtiny10a is https://github.com/vancegroup-mirrors/avr-libc/blob/master/avr-libc/include/avr/iotn13a.h. Note: You won't include it directly.
 
 # Arduino IDE
 
 ## ATTiny13
-For to have ATtiny13 configure additional board manager URL [https://mcudude.github.io/MicroCore/package_MCUdude_MicroCore_index.json]().
+For to have ATtiny13 configure additional board manager URL https://mcudude.github.io/MicroCore/package_MCUdude_MicroCore_index.json.
 
 ## In-System-Programming via USBtinyISP
 Via Programmer USBtinyISP
