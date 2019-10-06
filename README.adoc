@@ -178,3 +178,7 @@ Via Programmer USBtinyISP
 ** Automatic Reaction on Events (if available at ATtiny13a / ATtiny45)
 * Sleep Modes
 * Reduce Power Consumption
+
+# Links
+* http://www.8bit-era.cz/arduino-timer-interrupts-calculator.html
+# https://blog.podkalicki.com/100-projects-on-attiny13/
