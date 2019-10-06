@@ -181,4 +181,4 @@ Via Programmer USBtinyISP
 
 # Links
 * http://www.8bit-era.cz/arduino-timer-interrupts-calculator.html
-# https://blog.podkalicki.com/100-projects-on-attiny13/
+* https://blog.podkalicki.com/100-projects-on-attiny13/
